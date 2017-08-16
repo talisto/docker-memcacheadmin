@@ -5,7 +5,7 @@ RUN apk --update add libtool libmemcached-dev libmemcached libmemcached-libs \
     zlib-dev && echo "yes  --disable-memcached-sasl" | pecl install memcached &&\
     echo "extension=memcached.so" >> /usr/local/etc/php/php.ini
 
-ADD http://phpmemcacheadmin.googlecode.com/files/phpMemcachedAdmin-1.2.2-r262.tar.gz /tmp/admin.tar.gz
+ADD https://github.com/elijaa/phpmemcachedadmin/archive/1.3.0.tar.gz /tmp/admin.tar.gz
 
 RUN mkdir -p /var/www/html/memcachedadmin && tar xvzf /tmp/admin.tar.gz -C /var/www/html/memcachedadmin
 
