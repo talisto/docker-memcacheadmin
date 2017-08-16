@@ -1,4 +1,4 @@
-FROM php:5.6-alpine
+FROM php:7.1-alpine
 MAINTAINER Plopix
 
 RUN apk --update add libtool libmemcached-dev libmemcached libmemcached-libs \
