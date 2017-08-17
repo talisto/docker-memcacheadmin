@@ -1,13 +1,18 @@
 FROM php:7.1-alpine
 
-RUN apk --update add autoconf g++ make libtool libmemcached-dev libmemcached libmemcached-libs zlib-dev
+RUN apk --update add autoconf g++ make libtool libmemcached-dev libmemcached libmemcached-libs zlib-dev wget tar gzip
 RUN apk add cyrus-sasl-dev
 RUN pecl install memcached
 RUN docker-php-ext-enable memcached
 
-ADD https://github.com/elijaa/phpmemcachedadmin/archive/1.3.0.tar.gz /tmp/phpmemcachedadmin
+RUN cd /tmp && \
+    wget https://github.com/elijaa/phpmemcachedadmin/archive/1.3.0.tar.gz && \
+    tar zxvf 1.3.0.tar.gz && \
+    rm 1.3.0.tar.gz
 RUN mkdir -p /var/www
-RUN cp -r /tmp/phpmemcachedadmin/phpmemcachedadmin-1.3.0/* /var/www
+RUN cp -r /tmp/phpmemcachedadmin-1.3.0/* /var/www
+
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV MEMCACHE_HOST memcache
 ENV MEMCACHE_PORT 11211
