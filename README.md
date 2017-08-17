@@ -1,3 +1,3 @@
-# Docker for Memcache(d) Admin
+# Docker container for PHP Memcache(d) Admin v1.3.0
 
-PHP 5.6-alpine
+PHP 7.1-alpine base
