@@ -1,7 +1,7 @@
 FROM php:7.1-alpine
 
-RUN apk --update add autoconf g++ make libtool libmemcached-dev libmemcached libmemcached-libs zlib-dev wget tar gzip
-RUN apk add cyrus-sasl-dev
+RUN apk --update add autoconf g++ make libtool wget tar gzip \
+    libmemcached-dev libmemcached libmemcached-libs cyrus-sasl-dev zlib-dev
 RUN pecl install memcached
 RUN docker-php-ext-enable memcached
 
