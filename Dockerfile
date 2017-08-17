@@ -1,5 +1,7 @@
 FROM php:7.1-alpine
 
+MAINTAINER Talisto <https://github.com/talisto>
+
 RUN apk --update add autoconf g++ make libtool wget tar gzip \
     libmemcached-dev libmemcached libmemcached-libs cyrus-sasl-dev zlib-dev
 RUN pecl install memcached
